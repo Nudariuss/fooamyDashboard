@@ -1,0 +1,285 @@
+/*
+* demo.css
+* File include item demo only specific css only
+******************************************************************************/
+
+.menu .app-brand.demo {
+  height: 64px;
+  margin-top: 12px;
+}
+
+.app-brand-logo.demo svg {
+  width: 22px;
+  height: 38px;
+}
+
+.app-brand-text.demo {
+  font-size: 1.75rem;
+  letter-spacing: -0.5px;
+}
+
+/* ! For .layout-navbar-fixed added fix padding top to .layout-page */
+/* Detached navbar */
+.layout-navbar-fixed .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu) .layout-page {
+  padding-top: 74px !important;
+}
+/* Default navbar */
+.layout-navbar-fixed .layout-wrapper:not(.layout-without-menu) .layout-page {
+  padding-top: 64px !important;
+}
+.docs-page .layout-navbar-fixed.layout-wrapper:not(.layout-without-menu) .layout-page,
+.docs-page .layout-menu-fixed.layout-wrapper:not(.layout-without-menu) .layout-page {
+  padding-top: 62px !important;
+}
+
+/* Navbar page z-index issue solution */
+.content-wrapper .navbar {
+  z-index: auto;
+}
+
+/*
+* Content
+******************************************************************************/
+
+.demo-blocks > * {
+  display: block !important;
+}
+
+.demo-inline-spacing > * {
+  margin: 1rem 0.375rem 0 0 !important;
+}
+
+/* ? .demo-vertical-spacing class is used to have vertical margins between elements. To remove margin-top from the first-child, use .demo-only-element class with .demo-vertical-spacing class. For example, we have used this class in forms-input-groups.html file. */
+.demo-vertical-spacing > * {
+  margin-top: 1rem !important;
+  margin-bottom: 0 !important;
+}
+.demo-vertical-spacing.demo-only-element > :first-child {
+  margin-top: 0 !important;
+}
+
+.demo-vertical-spacing-lg > * {
+  margin-top: 1.875rem !important;
+  margin-bottom: 0 !important;
+}
+.demo-vertical-spacing-lg.demo-only-element > :first-child {
+  margin-top: 0 !important;
+}
+
+.demo-vertical-spacing-xl > * {
+  margin-top: 5rem !important;
+  margin-bottom: 0 !important;
+}
+.demo-vertical-spacing-xl.demo-only-element > :first-child {
+  margin-top: 0 !important;
+}
+
+.rtl-only {
+  display: none !important;
+  text-align: left !important;
+  direction: ltr !important;
+}
+
+[dir='rtl'] .rtl-only {
+  display: block !important;
+}
+
+/* Dropdown buttons going out of small screens */
+@media (max-width: 576px) {
+  #dropdown-variation-demo .btn-group .text-truncate {
+    width: 231px;
+    position: relative;
+  }
+  #dropdown-variation-demo .btn-group .text-truncate::after {
+    position: absolute;
+    top: 45%;
+    right: 0.65rem;
+  }
+}
+
+/*
+* Layout demo
+******************************************************************************/
+
+.layout-demo-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+.layout-demo-placeholder img {
+  width: 900px;
+}
+.layout-demo-info {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+
+/* Fooamy Laundry
+***********************************************************************/
+.content {
+  margin-bottom: 100px; /* Jarak agar konten tidak tertutup oleh bottombar */
+}
+
+.app-brand-logo {
+  width: 200px; /* Ukuran disesuaikan */
+  height: auto; /* Menjaga rasio aspek */
+}
+
+.app-brand-link {
+  display: flex;
+  align-items: center;
+}
+
+.app-brand-text {
+  margin-left: 8px; /* Menyesuaikan jarak teks */
+  font-weight: bold;
+}
+
+/* PAGINATION */
+.pagination .page-item .page-link {
+  border: 1px solid #dee2e6; /* Border untuk tombol */
+  border-radius: 6px; /* Sudut melengkung */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6c757d;
+  background-color: #f8f9fa;
+  margin: 0 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+  transition: all 0.2s ease-in-out; /* Efek transisi untuk hover */
+}
+
+.pagination .page-item.active .page-link {
+  color: #fff;
+  background-color: #88a9c3; /* Primary color */
+  border-color: #88a9c3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination .page-item.active:hover .page-link {
+  background-color: #7a98b0;
+  color: #e9ecef;
+}
+
+/* Disable hover effect for disabled pagination */
+.pagination .page-item.disabled:hover .page-link {
+  background-color: #f8f9fa; /* Tetap warna asli */
+  color: #6c757d; /* Tetap warna asli */
+  cursor: not-allowed; /* Tampilkan kursor not-allowed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: none; /* Hilangkan transisi */
+}
+
+.pagination .page-item:hover .page-link {
+  background-color: #88a9c3;
+  color: #e9ecef;
+}
+
+.pagination .page-item:first-child .page-link,
+.pagination .page-item:last-child .page-link {
+  border-radius: 6px; /* Tetap rounded untuk first dan last */
+}
+
+.pagination .page-item.disabled .page-link {
+  opacity: 0.5;
+  pointer-events: none; /* Nonaktifkan interaksi */
+}
+
+/* Bottombar*/
+.bg-light {
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bottombar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1020;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Custom Checkbox */
+.form-check-input {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px; /* Kotak rounded */
+  border: 2px solid #88a9c3; /* Primary color */
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-check-input:checked {
+  background-color: #88a9c3; /* Primary color */
+  border-color: #88a9c3;
+}
+
+.form-check-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(136, 169, 195, 0.3); /* Shadow pada fokus */
+}
+
+/* Bottombar Styling */
+.bottombar {
+  position: fixed; /* Membuat posisi bottombar tetap */
+  bottom: 0; /* Menempel di bawah layar */
+  left: 0;
+  right: 0;
+  z-index: 1020; /* Pastikan berada di atas elemen lain */
+  background-color: #88a9c3; /* Warna latar belakang primary */
+  color: #fff; /* Warna teks putih */
+  border-top: 1px solid #6c8fa2; /* Garis atas dengan warna lebih gelap */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+  padding: 1rem; /* Jarak dalam */
+  font-size: 1.2rem; /* Memperbesar ukuran teks */
+}
+
+/* Total Price Text */
+.bottombar .fw-bold {
+  font-size: 1.5rem; /* Memperbesar teks Total Price */
+  color: #fff; /* Warna teks putih */
+}
+
+/* Placeholder Styling (Optional) */
+.bottombar .me-2 {
+  font-size: 1.2rem; /* Ukuran teks label */
+  color: #f1f1f1; /* Warna teks label lebih cerah */
+}
+
+.card {
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-tabs .nav-link {
+  color: #6c757d;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #88a9c3; /* Primary color */
+  color: #fff;
+}
+
+.short-searchbar {
+  max-width: 400px;
+  width: 100%;
+}
+
+thead.bg-primary th {
+  color: #ffffff; /* Warna putih */
+}

@@ -1,0 +1,76 @@
+{
+  "menu": [
+    {
+      "url": "/",
+      "name": "Dashboards",
+      "icon": "menu-icon fi fi-br-home",
+      "slug": "dashboard"
+    },
+    {
+      "name": "Laporan Keuangan",
+      "icon": "menu-icon tf-icons fi fi-br-chart-line-up",
+      "slug": "laporan-keuangan",
+      "submenu": [
+        {
+          "url": "/laporan-keuangan/pemasukan",
+          "name": "Pemasukan",
+          "slug": "laporan-keuangan-pemasukan"
+        },
+        {
+          "url": "/laporan-keuangan/pengeluaran",
+          "name": "Pengeluaran",
+          "slug": "laporan-keuangan-pengeluaran"
+        }
+      ]
+    },
+    {
+      "url": "/account/list",
+      "name": "Account",
+      "icon": "menu-icon tf-icons fi fi-br-user",
+      "slug": "account-list-account",
+      "routes": ["list-account","account-list-account", "account-create-account", "account-store","account-detail-account", "account-filter-account", "filter-results-account","account-detail-account-order","account-detail-account-operation"]
+    },
+    {
+      "url": "/layanan/list",
+      "name": "Layanan",
+      "icon": "menu-icon tf-icons fi fi-br-list-check",
+      "slug": "layanan-list",
+      "routes": ["layanan-list", "filter-layanan", "layanan-add"]
+    },
+    {
+      "url": "/pakaian/list",
+      "name": "Pakaian",
+      "icon": "menu-icon tf-icons fi fi-br-shirt",
+      "slug": "list-pakaian",
+      "routes": ["list-pakaian", "filter-pakaian", "add-pakaian"]
+    },
+    {
+      "url": "/lokasi/hq/list",
+      "name": "Lokasi",
+      "icon": "menu-icon tf-icons fi fi-br-marker",
+      "slug": "list-lokasi-hq",
+      "routes": ["list-lokasi-hq","add-lokasi-hq","edit-lokasi-hq","detail-lokasi-hq","list-lokasi-loket","add-lokasi-loket","edit-lokasi-loket","detail-lokasi-loket"]
+    },
+    {
+      "url": "/inventaris/list",
+      "name": "Inventaris",
+      "icon": "menu-icon tf-icons fi fi-br-iron",
+      "slug": "list-inventaris",
+      "routes": [""]
+    },
+    {
+      "url": "/promo/list",
+      "name": "Promo",
+      "icon": "menu-icon tf-icons fi fi-br-badge-percent",
+      "slug": "list-promo",
+      "routes": [""]
+    },
+    {
+      "url": "/keluhan/operasional/list",
+      "name": "Keluhan",
+      "icon": "menu-icon tf-icons fi fi-br-info",
+      "slug": "list-keluhan-operasional",
+      "routes": ["list-keluhan-aplikasi"]
+    }
+  ]
+}
