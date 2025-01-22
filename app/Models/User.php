@@ -2,24 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-  use HasFactory;
-
   protected $table = 'user'; // Nama tabel di database
   protected $primaryKey = 'user_id'; // Primary key tabel
   public $timestamps = true; // Aktifkan timestamps
-  public $incrementing = true; // Primary key menggunakan auto-increment
 
   protected $fillable = [
     'name',
     'password',
-    'phone_number',
     'role',
-    'is_active',
   ];
 
   protected $hidden = [
@@ -27,7 +21,31 @@ class User extends Authenticatable
   ];
 
   protected $casts = [
-    'is_active' => 'boolean', // Cast TINYINT ke boolean
-    'role' => 'string',      // Cast ENUM ke string
+    'role' => 'string',
   ];
+
+  public function userMobile()
+  {
+      return $this->hasOne(UserMobile::class, 'user_id', 'user_id');
+  }
+
+  public function userWeb()
+  {
+      return $this->hasOne(UserWeb::class, 'user_id', 'user_id');
+  }
+
+  public function userProfile()
+  {
+    return $this->hasOne(UserProfile::class, 'user_id', 'user_id');
+  }
+
+  public function loginHistory()
+  {
+      return $this->hasMany(LoginHistory::class, 'user_id', 'user_id');
+  }
+
+  public function otp()
+  {
+      return $this->hasMany(Otp::class, 'user_id', 'user_id');
+  }
 }
