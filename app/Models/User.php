@@ -26,12 +26,12 @@ class User extends Authenticatable
 
   public function userMobile()
   {
-      return $this->hasOne(UserMobile::class, 'user_id', 'user_id');
+    return $this->hasOne(UserMobile::class, 'user_id', 'user_id');
   }
 
   public function userWeb()
   {
-      return $this->hasOne(UserWeb::class, 'user_id', 'user_id');
+    return $this->hasOne(UserWeb::class, 'user_id', 'user_id');
   }
 
   public function userProfile()
@@ -41,11 +41,11 @@ class User extends Authenticatable
 
   public function loginHistory()
   {
-      return $this->hasMany(LoginHistory::class, 'user_id', 'user_id');
+    return $this->hasMany(LoginHistory::class, 'user_id', 'user_id');
   }
 
   public function otp()
   {
-      return $this->hasMany(Otp::class, 'user_id', 'user_id');
+    return $this->hasMany(Otp::class, 'user_id', 'user_id');
   }
 }

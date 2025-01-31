@@ -24,53 +24,86 @@
       ]
     },
     {
-      "url": "/account/list",
-      "name": "Account",
+      "url": "/account/customer",
+      "name": "Akun",
       "icon": "menu-icon tf-icons fi fi-br-user",
-      "slug": "account-list-account",
-      "routes": ["list-account","account-list-account", "account-create-account", "account-store","account-detail-account", "account-filter-account", "filter-results-account","account-detail-account-order","account-detail-account-operation"]
+      "slug": "account-list",
+      "routes": [
+        "account-list",
+        "account-create",
+        "account-store",
+        "account-delete",
+        "account-filter",
+        "account-detail-overview",
+        "account-update-status",
+        "account-detail-order",
+        "account-detail-operation"
+      ]
     },
     {
       "url": "/layanan/list",
       "name": "Layanan",
       "icon": "menu-icon tf-icons fi fi-br-list-check",
       "slug": "layanan-list",
-      "routes": ["layanan-list", "filter-layanan", "layanan-add"]
+      "routes": [
+        "layanan-list",
+        "filter-layanan",
+        "layanan-add"
+      ]
     },
     {
       "url": "/pakaian/list",
       "name": "Pakaian",
       "icon": "menu-icon tf-icons fi fi-br-shirt",
       "slug": "list-pakaian",
-      "routes": ["list-pakaian", "filter-pakaian", "add-pakaian"]
+      "routes": [
+        "list-pakaian",
+        "filter-pakaian",
+        "add-pakaian"
+      ]
     },
     {
       "url": "/lokasi/hq/list",
       "name": "Lokasi",
       "icon": "menu-icon tf-icons fi fi-br-marker",
-      "slug": "list-lokasi-hq",
-      "routes": ["list-lokasi-hq","add-lokasi-hq","edit-lokasi-hq","detail-lokasi-hq","list-lokasi-loket","add-lokasi-loket","edit-lokasi-loket","detail-lokasi-loket"]
+      "slug": "lokasi-list",
+      "routes": [
+        "lokasi-list",
+        "lokasi-detail",
+        "lokasi-create",
+        "lokasi-store",
+        "lokasi-edit",
+        "lokasi-update",
+        "lokasi-destroy",
+        "lokasi-filter"
+      ]
     },
     {
       "url": "/inventaris/list",
       "name": "Inventaris",
       "icon": "menu-icon tf-icons fi fi-br-iron",
       "slug": "list-inventaris",
-      "routes": [""]
+      "routes": [
+        ""
+      ]
     },
     {
       "url": "/promo/list",
       "name": "Promo",
       "icon": "menu-icon tf-icons fi fi-br-badge-percent",
       "slug": "list-promo",
-      "routes": [""]
+      "routes": [
+        ""
+      ]
     },
     {
       "url": "/keluhan/operasional/list",
       "name": "Keluhan",
       "icon": "menu-icon tf-icons fi fi-br-info",
       "slug": "list-keluhan-operasional",
-      "routes": ["list-keluhan-aplikasi"]
+      "routes": [
+        "list-keluhan-aplikasi"
+      ]
     }
   ]
 }

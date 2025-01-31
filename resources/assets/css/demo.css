@@ -122,7 +122,6 @@
   margin-top: 1rem;
 }
 
-
 /* Fooamy Laundry
 ***********************************************************************/
 .content {
@@ -282,4 +281,10 @@
 
 thead.bg-primary th {
   color: #ffffff; /* Warna putih */
+}
+
+th {
+  text-transform: none !important;
+  letter-spacing: 1px;
+  padding: 12px 8px;
 }

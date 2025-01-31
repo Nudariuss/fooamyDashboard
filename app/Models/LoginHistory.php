@@ -20,6 +20,7 @@ class LoginHistory extends Model
 
     protected $casts = [
         'platform' => 'string',
+        'activity_date' => 'datetime',
     ];
 
     public function user()
