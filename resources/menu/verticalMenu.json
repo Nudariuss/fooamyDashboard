@@ -3,30 +3,40 @@
     {
       "url": "/",
       "name": "Dashboards",
-      "icon": "menu-icon fi fi-br-home",
+      "icon": "menu-icon fi fi-rr-home",
       "slug": "dashboard"
     },
     {
       "name": "Laporan Keuangan",
-      "icon": "menu-icon tf-icons fi fi-br-chart-line-up",
+      "icon": "menu-icon tf-icons fi fi-rr-chart-line-up",
       "slug": "laporan-keuangan",
       "submenu": [
         {
           "url": "/laporan-keuangan/pemasukan",
           "name": "Pemasukan",
-          "slug": "laporan-keuangan-pemasukan"
+          "slug": "laporan-keuangan-pemasukan",
+          "routes": [
+            "laporan-keuangan-pemasukan",
+            "laporan-filter",
+            "laporan-filter-results"
+          ]
         },
         {
           "url": "/laporan-keuangan/pengeluaran",
           "name": "Pengeluaran",
-          "slug": "laporan-keuangan-pengeluaran"
+          "slug": "laporan-keuangan-pengeluaran",
+          "routes": [
+            "laporan-keuangan-pengeluaran",
+            "laporan-filter",
+            "laporan-filter-results"
+          ]
         }
       ]
     },
     {
       "url": "/account/customer",
       "name": "Akun",
-      "icon": "menu-icon tf-icons fi fi-br-user",
+      "icon": "menu-icon tf-icons fi fi-rr-user",
       "slug": "account-list",
       "routes": [
         "account-list",
@@ -34,16 +44,25 @@
         "account-store",
         "account-delete",
         "account-filter",
+        "account-filter-results",
         "account-detail-overview",
         "account-update-status",
         "account-detail-order",
+        "account-order-detail",
         "account-detail-operation"
       ]
     },
     {
+      "url": "/historylogin/list",
+      "name": "History Login",
+      "icon": "menu-icon tf-icons fi fi-rr-time-past",
+      "slug": "list-historylogin",
+      "routes": []
+    },
+    {
       "url": "/layanan/list",
       "name": "Layanan",
-      "icon": "menu-icon tf-icons fi fi-br-list-check",
+      "icon": "menu-icon tf-icons fi fi-rr-list-check",
       "slug": "layanan-list",
       "routes": [
         "layanan-list",
@@ -54,7 +73,7 @@
     {
       "url": "/pakaian/list",
       "name": "Pakaian",
-      "icon": "menu-icon tf-icons fi fi-br-shirt",
+      "icon": "menu-icon tf-icons fi fi-rr-shirt",
       "slug": "list-pakaian",
       "routes": [
         "list-pakaian",
@@ -65,7 +84,7 @@
     {
       "url": "/lokasi/hq/list",
       "name": "Lokasi",
-      "icon": "menu-icon tf-icons fi fi-br-marker",
+      "icon": "menu-icon tf-icons fi fi-rr-marker",
       "slug": "lokasi-list",
       "routes": [
         "lokasi-list",
@@ -81,7 +100,7 @@
     {
       "url": "/inventaris/list",
       "name": "Inventaris",
-      "icon": "menu-icon tf-icons fi fi-br-iron",
+      "icon": "menu-icon tf-icons fi fi-rr-iron",
       "slug": "list-inventaris",
       "routes": [
         ""
@@ -90,7 +109,7 @@
     {
       "url": "/promo/list",
       "name": "Promo",
-      "icon": "menu-icon tf-icons fi fi-br-badge-percent",
+      "icon": "menu-icon tf-icons fi fi-rr-badge-percent",
       "slug": "list-promo",
       "routes": [
         ""
@@ -99,7 +118,7 @@
     {
       "url": "/keluhan/operasional/list",
       "name": "Keluhan",
-      "icon": "menu-icon tf-icons fi fi-br-info",
+      "icon": "menu-icon tf-icons fi fi-rr-info",
       "slug": "list-keluhan-operasional",
       "routes": [
         "list-keluhan-aplikasi"

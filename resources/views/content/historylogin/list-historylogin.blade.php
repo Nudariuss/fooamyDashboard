@@ -7,19 +7,15 @@
 @extends('layouts/contentNavbarLayout')
 
 @section('page-script')
-    @vite('resources/assets/js/bottombar.js')
+    @vite('resources/assets/js/list-historylogin.js')
 @endsection
 
-@section('page-script')
-    @vite('resources/assets/js/laporan-pengeluaran.js')
-@endsection
-
-@section('title', 'Laporan Keuangan - Pengeluaran')
+@section('title', 'List History Login')
 
 @section('content')
     <div class="content">
       <div class="container-fluid">
-        <x-judul title="Laporan Keuangan Pengeluaran" />
+        <x-judul title="List History Login" />
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-style1">
@@ -27,44 +23,13 @@
                     <a href="{{ url('/') }}">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="javascript:void(0);">Laporan Keuangan</a>
+                    <a href="javascript:void(0);">History Login</a>
                 </li>
-                <li class="breadcrumb-item active">
+                {{-- <li class="breadcrumb-item active">
                     <a href="{{ route('laporan-keuangan-pengeluaran') }}">Pengeluaran</a>
-                </li>
+                </li> --}}
             </ol>
         </nav>
-
-        <!-- Summary Cards -->
-        <div class="row mb-4">
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5>DAY</h5>
-                        <h2>Rp 2,345,000</h2>
-                        <p>5k transaksi</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5>WEEK</h5>
-                        <h2>Rp 37,435,000</h2>
-                        <p>21k transaksi</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5>MONTH</h5>
-                        <h2>Rp 92,350,000</h2>
-                        <p>6k transaksi</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Table Section -->
         <div class="card mb-3">
@@ -79,31 +44,28 @@
                         </div>
                     </div>
                     <div class="col-md-6 d-flex justify-content-end align-items-center gap-2">
-                        <!-- View Log Button -->
-                        <a href="javascript:void(0);" class="btn btn-primary">
-                            View Log
-                        </a>
-
-                        <!-- Clear Button -->
-                        <button type="button" class="btn btn-secondary" id="clearFilters">
-                            Clear
-                        </button>
 
                         <!-- Dropdown Pemasukan/Pengeluaran -->
-                        {{-- <div class="btn-group">
+                        <div class="btn-group">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                Pengeluaran
+                                Customer
                             </button>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('laporan-keuangan-pemasukan') }}">Pemasukan</a>
+                                    <a class="dropdown-item active" href="javascript:void(0);">Customer</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item active" href="{{ route('laporan-keuangan-pengeluaran') }}">Pengeluaran</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Management</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0);">Mitra</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0);">Operational</a>
                                 </li>
                             </ul>
-                        </div> --}}
+                        </div>
 
                         <!-- Filter Button -->
                         <a href="{{ route('laporan-filter', ['type' => 'pengeluaran']) }}" class="btn btn-primary">
@@ -119,12 +81,11 @@
                     <thead class="bg-primary">
                         <tr>
                             <th><input type="checkbox" id="selectAll" class="form-check-input border-white"></th>
-                            <th>HQ</th>
-                            <th>Loket</th>
-                            <th>Kategori</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Lokasi</th>
                             <th>Tanggal</th>
-                            <th>Jumlah Transaksi</th>
-                            <th>Harga</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -146,20 +107,18 @@
                         @endforeach --}}
                         <tr>
                             <td><input type="checkbox" id="selectAll" class="form-check-input border-white"></td>
-                            <td>HQ</td>
-                            <td>Loket</td>
-                            <td>Kategori</td>
-                            <td>Tanggal</td>
-                            <td>Jumlah Transaksi</td>
-                            <td>Harga</td>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Lokasi</th>
+                            <th>Tanggal</th>
                             <td>
-                              <a href="javascript:void(0);"
-                                  class="btn btn-icon">
-                                  <i class="fi fi-br-pencil"></i>
-                              </a>
-                              <button type="button" class="btn btn-icon delete-record">
-                                  <i class="fi fi-br-trash"></i>
-                              </button>
+                                <a href="javascript:void(0);" class="btn btn-icon">
+                                    <i class="fi fi-br-pencil"></i>
+                                </a>
+                                <button type="button" class="btn btn-icon delete-record">
+                                    <i class="fi fi-br-trash"></i>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
@@ -186,20 +145,7 @@
                 </nav>
             </div>
         </div>
-
-        <div class="bottombar p-3">
-          <div class="d-flex justify-content-between align-items-center">
-              <!-- Placeholder for other content (if needed) -->
-              <div></div>
-
-              <!-- Total Price -->
-              <div class="d-flex align-items-center">
-                  <span class="fw-bold text-white">Rp <span id="totalPrice">0</span></span>
-              </div>
-          </div>
       </div>
-      </div>
-
 
     </div>
 @endsection

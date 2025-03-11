@@ -33,7 +33,7 @@
         <!-- Filter Form -->
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('filter-results') }}" method="GET">
+                <form action="{{ route('account.filter-results') }}" method="GET">
                     <input type="hidden" name="role" value="{{ $role }}">
 
                     <!-- Search Bar -->
@@ -70,7 +70,7 @@
                     </div>
 
                     <!-- Dropdowns for HQ and Loket -->
-                    <div class="row mb-3">
+                    {{-- <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="hq" class="form-label">HQ</label>
                             <select id="hq" name="hq" class="form-select">
@@ -92,7 +92,7 @@
                                 @endforeach
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Radio Buttons for New/Old -->
                     <div class="row mb-3">

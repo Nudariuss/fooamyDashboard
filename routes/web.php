@@ -22,6 +22,9 @@ use App\Http\Controllers\laporan_keuangan\LaporanPengeluaran;
 use App\Http\Controllers\laporan_keuangan\FilterLaporan;
 
 use App\Http\Controllers\account\Account;
+use App\Http\Controllers\account\OrderController;
+
+use App\Http\Controllers\history_login\HistoryLogin;
 
 use App\Http\Controllers\layanan\ListLayanan;
 use App\Http\Controllers\layanan\FilterLayanan;
@@ -50,8 +53,8 @@ Route::get('/', [Analytics::class, 'index'])->name('dashboard');
 // laporan keuangan
 Route::get('/laporan-keuangan/pemasukan', [LaporanPemasukan::class, 'index'])->name('laporan-keuangan-pemasukan');
 Route::get('/laporan-keuangan/pengeluaran', [LaporanPengeluaran::class, 'index'])->name('laporan-keuangan-pengeluaran');
-Route::get('/laporan-keuangan/filter', [FilterLaporan::class, 'index'])->name('filter-laporan');
-Route::get('/laporan-keuangan/filter-results', [FilterLaporan::class, 'filterResults'])->name('filter-results');
+Route::get('/laporan-keuangan/filter', [FilterLaporan::class, 'index'])->name('laporan-filter');
+Route::get('/laporan-keuangan/filter-results', [FilterLaporan::class, 'filterResults'])->name('laporan-filter-results');
 
 
 // Account Routes
@@ -59,16 +62,18 @@ Route::prefix('account')->group(function () {
   Route::get('/create', [Account::class, 'create'])->name('account-create');
   Route::post('/store', [Account::class, 'store'])->name('account-store');
   Route::get('/filter', [Account::class, 'filter'])->name('account-filter');
-  Route::get('/filter/results', [Account::class, 'filterResults'])->name('filter-results');
+  Route::get('/filter/results', [Account::class, 'filterResults'])->name('account-filter-results');
   Route::get('/{role}', [Account::class, 'index'])->name('account-list');
   Route::delete('/{id}', [Account::class, 'destroy'])->name('account-delete');
   Route::get('/{role}/{id}/overview', [Account::class, 'detailOverview'])->name('account-detail-overview');
   Route::post('/{id}/update-status', [Account::class, 'updateStatus'])->name('account-update-status');
-  Route::get('/{role}/{id}/order', [Account::class, 'detailOrder'])->name('account-detail-order');
+  Route::get('{role}/{id}/order', [OrderController::class, 'index'])->name('account-detail-order');
+  Route::get('{role}/{id}/order/{orderId}', [OrderController::class, 'show'])->name('account-order-detail');
   Route::get('/{role}/{id}/operation', [Account::class, 'detailOperation'])->name('account-detail-operation');
 });
 
-
+// History Login
+Route::get('/historylogin/list', [HistoryLogin::class, 'index'])->name('list-historylogin');
 
 // layanan
 Route::get('/layanan/list', [ListLayanan::class, 'index'])->name('layanan-list');

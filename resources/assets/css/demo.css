@@ -161,7 +161,7 @@
 
 .pagination .page-item.active .page-link {
   color: #fff;
-  background-color: #88a9c3; /* Primary color */
+  background-color: #88a9c3;
   border-color: #88a9c3;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -173,11 +173,11 @@
 
 /* Disable hover effect for disabled pagination */
 .pagination .page-item.disabled:hover .page-link {
-  background-color: #f8f9fa; /* Tetap warna asli */
-  color: #6c757d; /* Tetap warna asli */
-  cursor: not-allowed; /* Tampilkan kursor not-allowed */
+  background-color: #f8f9fa;
+  color: #6c757d;
+  cursor: not-allowed;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: none; /* Hilangkan transisi */
+  transition: none;
 }
 
 .pagination .page-item:hover .page-link {
@@ -187,12 +187,12 @@
 
 .pagination .page-item:first-child .page-link,
 .pagination .page-item:last-child .page-link {
-  border-radius: 6px; /* Tetap rounded untuk first dan last */
+  border-radius: 6px;
 }
 
 .pagination .page-item.disabled .page-link {
   opacity: 0.5;
-  pointer-events: none; /* Nonaktifkan interaksi */
+  pointer-events: none;
 }
 
 /* Bottombar*/
@@ -214,49 +214,38 @@
 .form-check-input {
   width: 20px;
   height: 20px;
-  border-radius: 4px; /* Kotak rounded */
-  border: 2px solid #88a9c3; /* Primary color */
+  border-radius: 4px;
+  border: 2px solid #88a9c3;
   background-color: #fff;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
 .form-check-input:checked {
-  background-color: #88a9c3; /* Primary color */
+  background-color: #88a9c3;
   border-color: #88a9c3;
 }
 
 .form-check-input:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(136, 169, 195, 0.3); /* Shadow pada fokus */
+  box-shadow: 0 0 0 3px rgba(136, 169, 195, 0.3);
 }
 
 /* Bottombar Styling */
 .bottombar {
-  position: fixed; /* Membuat posisi bottombar tetap */
-  bottom: 0; /* Menempel di bawah layar */
+  position: fixed;
+  bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1020; /* Pastikan berada di atas elemen lain */
-  background-color: #88a9c3; /* Warna latar belakang primary */
-  color: #fff; /* Warna teks putih */
-  border-top: 1px solid #6c8fa2; /* Garis atas dengan warna lebih gelap */
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Efek bayangan */
-  padding: 1rem; /* Jarak dalam */
-  font-size: 1.2rem; /* Memperbesar ukuran teks */
+  z-index: 1020;
+  background-color: #88a9c3;
+  color: #fff;
+  border-top: 1px solid #6c8fa2;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  font-size: 36px;
 }
 
-/* Total Price Text */
-.bottombar .fw-bold {
-  font-size: 1.5rem; /* Memperbesar teks Total Price */
-  color: #fff; /* Warna teks putih */
-}
-
-/* Placeholder Styling (Optional) */
-.bottombar .me-2 {
-  font-size: 1.2rem; /* Ukuran teks label */
-  color: #f1f1f1; /* Warna teks label lebih cerah */
-}
 
 .card {
   border-radius: 12px;

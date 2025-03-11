@@ -7,7 +7,7 @@
 @extends('layouts/contentNavbarLayout')
 
 @section('page-script')
-    @vite('resources/assets/js/create-account.js')
+    @vite('resources/assets/js/account.js')
 @endsection
 
 @section('title', 'Tambah Akun')

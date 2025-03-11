@@ -66,6 +66,9 @@
                             </div>
                         </form>
                     </div>
+                    @if ($orders->isEmpty())
+                      <p>Belum ada order untuk akun ini.</p>
+                    @else
                     <div class="card-datatable table-responsive">
                         <table class="table border-bottom">
                             <thead class="bg-primary">
@@ -96,6 +99,7 @@
                             </ul>
                         </nav>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

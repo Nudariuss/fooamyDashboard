@@ -32,23 +32,17 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
-                        <form method="GET" action="{{ route('account-list', ['role' => strtolower($role)]) }}"
-                            class="d-flex">
-                            <input type="hidden" name="type" value="{{ $roleDisplay }}" />
+                        <form method="GET" action="{{ route('account-list', ['role' => 'all']) }}" class="d-flex">
                             <div class="input-group input-group-merge short-searchbar">
                                 <span class="input-group-text" id="basic-addon-search"><i class="bx bx-search"></i></span>
-                                <form method="GET" action="{{ route('account-list', ['role' => $role]) }}" class="d-flex">
-                                    <input type="text" class="form-control" name="search"
-                                        placeholder="Cari {{ $roleDisplay }}" value="{{ request('search') }}"
-                                        aria-label="Cari {{ $roleDisplay }}" />
-                                </form>
+                                <input type="text" class="form-control" name="search" placeholder="Cari akun"
+                                    value="{{ request('search') }}" aria-label="Cari akun" />
                             </div>
                         </form>
                     </div>
 
                     <div class="col-md-6 d-flex justify-content-end align-items-center">
-                        <a href="{{ route('account-create', ['role' => strtolower($role)]) }}"
-                            class="btn btn-primary me-2">
+                        <a href="{{ route('account-create', ['role' => strtolower($role)]) }}" class="btn btn-primary me-2">
                             <i class="bx bx-plus"></i>
                         </a>
 
@@ -136,76 +130,82 @@
                     </thead>
 
                     <tbody>
-                        @foreach ($accounts as $account)
+                        @if ($accounts->isEmpty())
                             <tr>
-                                <!-- Checkbox -->
-                                <td>
-                                    <input type="checkbox" class="form-check-input select-item"
-                                        data-id="{{ $account->user_id }}">
-                                </td>
-
-                                <!-- Nama -->
-                                <td>{{ $account->name }}</td>
-
-                                <!-- Kolom Berdasarkan Role -->
-                                @if ($role === 'admin')
-                                    <td>{{ $account->userWeb->email ?? '-' }}</td>
-                                @elseif ($role === 'customer')
-                                    <td>{{ $account->userMobile->phone_number ?? '-' }}</td>
-                                    <td>{{ $account->userMobile->gender ?? '-' }}</td>
-                                    <td>
-                                        <span
-                                            class="badge {{ $account->userMobile->is_active ? 'bg-success' : 'bg-secondary' }}">
-                                            {{ $account->userMobile->is_active ? 'Active' : 'Inactive' }}
-                                        </span>
-                                    </td>
-                                @elseif ($role === 'management')
-                                    <td>{{ $account->userWeb->email ?? '-' }}</td>
-                                    <td>
-                                        <span
-                                            class="badge {{ $account->userWeb->is_active ? 'bg-success' : 'bg-secondary' }}">
-                                            {{ $account->userWeb->is_active ? 'Active' : 'Inactive' }}
-                                        </span>
-                                    </td>
-                                @elseif ($role === 'mitra')
-                                    <td>{{ $account->userWeb->email ?? '-' }}</td>
-                                    <td>
-                                        <span
-                                            class="badge {{ $account->userWeb->is_active ? 'bg-success' : 'bg-secondary' }}">
-                                            {{ $account->userWeb->is_active ? 'Active' : 'Inactive' }}
-                                        </span>
-                                    </td>
-                                @elseif ($role === 'operational')
-                                    <td>{{ $account->userMobile->phone_number ?? '-' }}</td>
-                                    <td>{{ $account->userMobile->staff->driver_plate ?? '-' }}</td>
-                                    <td>{{ $account->userMobile->staff->driver_status ?? '-' }}</td>
-                                    <td>
-                                        <span
-                                            class="badge {{ $account->userMobile->staff->operational_status ? 'bg-success' : 'bg-secondary' }}">
-                                            {{ $account->userMobile->staff->operational_status ? 'Active' : 'Inactive' }}
-                                        </span>
-                                    </td>
-                                @endif
-
-                                <td>{{ $account->created_at }}</td>
-
-                                <!-- Actions -->
-                                <td>
-                                    <a href="{{ route('account-detail-overview', ['id' => $account->user_id, 'role' => $role]) }}"
-                                        class="btn btn-icon">
-                                        <i class="fi fi-br-pencil"></i>
-                                    </a>
-                                    <form action="{{ route('account-delete', ['id' => $account->user_id]) }}"
-                                        method="POST" class="d-inline delete-form">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="button" class="btn btn-icon delete-record">
-                                            <i class="fi fi-br-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
+                                <td colspan="5" class="text-center text-muted">Akun tidak terdaftar</td>
                             </tr>
-                        @endforeach
+                        @else
+                            @foreach ($accounts as $account)
+                                <tr>
+                                    <!-- Checkbox -->
+                                    <td>
+                                        <input type="checkbox" class="form-check-input select-item"
+                                            data-id="{{ $account->user_id }}">
+                                    </td>
+
+                                    <!-- Nama -->
+                                    <td>{{ $account->name }}</td>
+
+                                    <!-- Kolom Berdasarkan Role -->
+                                    @if ($role === 'admin')
+                                        <td>{{ $account->userWeb->email ?? '-' }}</td>
+                                    @elseif ($role === 'customer')
+                                        <td>{{ $account->userMobile->phone_number ?? '-' }}</td>
+                                        <td>{{ $account->userMobile->gender ?? '-' }}</td>
+                                        <td>
+                                            <span
+                                                class="badge {{ $account->userMobile->is_active ? 'bg-success' : 'bg-secondary' }}">
+                                                {{ $account->userMobile->is_active ? 'Active' : 'Inactive' }}
+                                            </span>
+                                        </td>
+                                    @elseif ($role === 'management')
+                                        <td>{{ $account->userWeb->email ?? '-' }}</td>
+                                        <td>
+                                            <span
+                                                class="badge {{ $account->userWeb->is_active ? 'bg-success' : 'bg-secondary' }}">
+                                                {{ $account->userWeb->is_active ? 'Active' : 'Inactive' }}
+                                            </span>
+                                        </td>
+                                    @elseif ($role === 'mitra')
+                                        <td>{{ $account->userWeb->email ?? '-' }}</td>
+                                        <td>
+                                            <span
+                                                class="badge {{ $account->userWeb->is_active ? 'bg-success' : 'bg-secondary' }}">
+                                                {{ $account->userWeb->is_active ? 'Active' : 'Inactive' }}
+                                            </span>
+                                        </td>
+                                    @elseif ($role === 'operational')
+                                        <td>{{ $account->userMobile->phone_number ?? '-' }}</td>
+                                        <td>{{ $account->userMobile->staff->driver_plate ?? '-' }}</td>
+                                        <td>{{ $account->userMobile->staff->driver_status ?? '-' }}</td>
+                                        <td>
+                                            <span
+                                                class="badge {{ $account->userMobile->staff->operational_status ? 'bg-success' : 'bg-secondary' }}">
+                                                {{ $account->userMobile->staff->operational_status ? 'Active' : 'Inactive' }}
+                                            </span>
+                                        </td>
+                                    @endif
+
+                                    <td>{{ $account->created_at }}</td>
+
+                                    <!-- Actions -->
+                                    <td>
+                                        <a href="{{ route('account-detail-overview', ['id' => $account->user_id, 'role' => $role]) }}"
+                                            class="btn btn-icon">
+                                            <i class="fi fi-br-pencil"></i>
+                                        </a>
+                                        <form action="{{ route('account-delete', ['id' => $account->user_id]) }}"
+                                            method="POST" class="d-inline delete-form">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" class="btn btn-icon delete-record">
+                                                <i class="fi fi-br-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

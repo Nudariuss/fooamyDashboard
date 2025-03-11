@@ -36,7 +36,7 @@ $isNavbar = false;
   <!-- Filter Form -->
   <div class="card">
     <div class="card-body">
-      <form action="{{ route('filter-results') }}" method="GET">
+      <form action="{{ route('laporan-filter-results') }}" method="GET">
         <input type="hidden" name="type" value="{{ $type }}">
         <!-- Search Bar -->
         <div class="row mb-3">

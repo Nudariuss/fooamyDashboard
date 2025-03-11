@@ -8,21 +8,40 @@ use App\Models\Hq;
 use App\Models\Locket;
 use App\Models\LoginHistory;
 use Illuminate\Http\Request;
+use App\Models\Order;
+
 
 class Account extends Controller
 {
-  public function index($role = 'customer')
+  public function index(Request $request, $role = 'all')
   {
-    $accounts = User::with(['userMobile.staff', 'userWeb'])
-      ->where('role', ucfirst($role))
-      ->paginate(5);
+    $query = User::with(['userMobile.staff', 'userWeb']);
+
+    // Jika bukan 'all', filter berdasarkan role tertentu
+    if ($role !== 'all') {
+        $query->where('role', ucfirst($role));
+    }
+
+    // Jika ada pencarian berdasarkan nama
+    if ($request->filled('search')) {
+        $query->where('name', 'like', '%' . $request->search . '%');
+    }
+
+    $accounts = $query->paginate(10);
+
+    // Jika tidak ada akun ditemukan, tambahkan pesan flash
+    if ($accounts->isEmpty()) {
+        session()->flash('error', 'Akun tidak terdaftar');
+    }
 
     return view('content.account.list-account', [
-      'accounts' => $accounts,
-      'role' => $role,
-      'roleDisplay' => ucfirst($role),
+        'accounts' => $accounts,
+        'role' => $role,
+        'roleDisplay' => ucfirst($role),
     ]);
   }
+
+
 
   public function create(Request $request)
   {
@@ -75,7 +94,7 @@ class Account extends Controller
       ]);
     }
 
-    return redirect()->route('list-account', ['role' => strtolower($request->role)])
+    return redirect()->route('account-list', ['role' => strtolower($request->role)])
       ->with('success', 'Account created successfully.');
   }
 
@@ -83,7 +102,7 @@ class Account extends Controller
   {
     $user = User::findOrFail($id);
     $user->delete();
-    return redirect()->route('list-account', ['role' => strtolower($user->role)])
+    return redirect()->route('account-list', ['role' => strtolower($user->role)])
       ->with('success', 'Account deleted successfully.');
   }
 
@@ -133,17 +152,18 @@ class Account extends Controller
     ]);
   }
 
-  public function detailOrder($id, $role)
+  public function detailOrder($role, $id)
   {
     $account = User::with(['userMobile', 'userWeb'])->findOrFail($id);
     $orders = Order::where('user_id', $id)->paginate(10);
 
     return view('content.account.detail-account-order', [
-      'account' => $account,
-      'role' => $role,
-      'orders' => $orders,
+        'account' => $account,
+        'role' => $role,
+        'orders' => $orders,
     ]);
   }
+
 
   public function detailOperation($id, $role)
   {
